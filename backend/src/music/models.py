@@ -16,6 +16,7 @@ class Artist(TimestampMixin, Base):
         back_populates="artist",
         lazy='raise',
         passive_deletes = True,
+        cascade="all, delete-orphan",
     )
 
 

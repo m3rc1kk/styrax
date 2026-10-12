@@ -28,3 +28,6 @@ app.add_middleware(
 async def healthcheck():
     return {"status": "ok"}
 
+
+from src.music.router import router as music_router
+app.include_router(music_router, tags=["Music"])
