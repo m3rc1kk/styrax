@@ -11,10 +11,11 @@ class Artist(TimestampMixin, Base):
     __tablename__ = "artist"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(String(40))
+    name: Mapped[str] = mapped_column(String(50))
     albums: Mapped[list['Album']] = relationship(
         back_populates="artist",
-        lazy='raise'
+        lazy='raise',
+        passive_deletes = True,
     )
 
 
@@ -65,3 +66,4 @@ class Track(TimestampMixin, Base):
         back_populates="tracks",
         lazy='raise'
     )
+
