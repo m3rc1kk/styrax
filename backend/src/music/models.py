@@ -38,7 +38,8 @@ class Album(TimestampMixin, Base):
         back_populates="album",
         lazy='raise',
         passive_deletes = True,
-        order_by = 'Track.track_number'
+        order_by = 'Track.track_number',
+        cascade="all, delete-orphan",
     )
 
     album_type: Mapped[AlbumType] = mapped_column(
