@@ -15,3 +15,9 @@ class NotFoundException(DetailedHTTPException):
 class ConflictException(DetailedHTTPException):
     STATUS_CODE = status.HTTP_409_CONFLICT
 
+class NotAuthenticatedException(DetailedHTTPException):
+    STATUS_CODE = status.HTTP_401_UNAUTHORIZED
+    DETAIL = 'Unauthorized'
+
+    def __init__(self) -> None:
+        super().__init__(headers={"WWW-Authenticate": "Bearer"})

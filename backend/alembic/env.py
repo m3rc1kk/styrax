@@ -30,6 +30,7 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 from src.music import models  # noqa: F401
+from src.auth import models  # noqa: F401
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
