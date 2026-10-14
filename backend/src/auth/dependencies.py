@@ -1,11 +1,13 @@
+from datetime import datetime, UTC
 from typing import Annotated
 
-from fastapi import Depends
+from fastapi import Depends, Cookie
 from fastapi.security import OAuth2PasswordBearer
 
 from src.auth import service
+from src.auth.constants import REFRESH_TOKEN_COOKIE
 from src.auth.exceptions import EmailTakenException, InvalidTokenException, UsernameTakenException
-from src.auth.models import User
+from src.auth.models import User, RefreshToken
 from src.auth.schemas import UserCreate
 from src.auth.security import decode_access_token
 from src.database import SessionDep
@@ -28,6 +30,18 @@ async def valid_user_create(data: UserCreate, session: SessionDep) -> UserCreate
         raise UsernameTakenException()
     return data
 
+async def valid_refresh_token(
+    session: SessionDep,
+    refresh_token: Annotated[str | None, Cookie(alias=REFRESH_TOKEN_COOKIE)] = None,
+) -> RefreshToken:
+    if refresh_token is None:
+        raise InvalidTokenException()
+    db_token = await service.get_refresh_token(session, refresh_token)
+    if db_token is None or db_token.expires_at < datetime.now(UTC):
+        raise InvalidTokenException()
+    return db_token
 
+
+ValidRefreshToken = Annotated[RefreshToken, Depends(valid_refresh_token)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 ValidUserCreate = Annotated[UserCreate, Depends(valid_user_create)]

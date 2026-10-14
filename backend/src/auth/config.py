@@ -11,6 +11,7 @@ class AuthConfig(BaseSettings):
 
     JWT_SECRET: SecretStr
     JWT_ALGORITHM: str = "HS256"
-    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 30
 
 auth_settings = AuthConfig()

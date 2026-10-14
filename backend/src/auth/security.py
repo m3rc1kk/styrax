@@ -1,3 +1,5 @@
+import hashlib
+import secrets
 from datetime import UTC, datetime, timedelta
 
 import jwt
@@ -25,11 +27,17 @@ def create_access_token(user_id: int) -> str:
 
 def decode_access_token(token: str) -> int | None:
     try:
-            payload=jwt.decode(
+        payload = jwt.decode(
             token,
             auth_settings.JWT_SECRET.get_secret_value(),
-            algorithms=auth_settings.JWT_ALGORITHM
+            algorithms=[auth_settings.JWT_ALGORITHM],
         )
     except jwt.InvalidTokenError:
         return None
     return int(payload['sub'])
+
+def generate_refresh_token() -> str:
+    return secrets.token_urlsafe(32)
+
+def hash_refresh_token(token: str) -> str:
+    return hashlib.sha256(token.encode()).hexdigest()
