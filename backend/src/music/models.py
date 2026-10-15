@@ -18,6 +18,11 @@ class Artist(TimestampMixin, Base):
         passive_deletes = True,
         cascade="all, delete-orphan",
     )
+    created_by_id: Mapped[int | None] = mapped_column(
+        ForeignKey("user_account.id", ondelete="SET NULL"),
+        index=True,
+    )
+
 
 
 class Album(TimestampMixin, Base):
@@ -46,6 +51,11 @@ class Album(TimestampMixin, Base):
     album_type: Mapped[AlbumType] = mapped_column(
         Enum(AlbumType, native_enum=False, length=20),
         default = AlbumType.SINGLE,
+    )
+
+    created_by_id: Mapped[int | None] = mapped_column(
+        ForeignKey("user_account.id", ondelete="SET NULL"),
+        index=True,
     )
 
 

@@ -7,8 +7,8 @@ from sqlalchemy.orm import selectinload
 from src.music.schemas import ArtistCreate, ArtistUpdate, AlbumCreate, AlbumUpdate, TrackCreate, TrackUpdate
 from src.music.models import Album, Artist, Track
 
-async def create_artist(session: AsyncSession, data: ArtistCreate) -> Artist:
-    artist = Artist(**data.model_dump())
+async def create_artist(session: AsyncSession, data: ArtistCreate, user_id: int) -> Artist:
+    artist = Artist(**data.model_dump(), created_by_id=user_id)
     session.add(artist)
     await session.commit()
     return artist
@@ -33,8 +33,8 @@ async def delete_artist(session: AsyncSession, artist: Artist) -> None:
 
 
 
-async def create_album(session: AsyncSession, data: AlbumCreate) -> Album:
-    album = Album(**data.model_dump())
+async def create_album(session: AsyncSession, data: AlbumCreate, user_id: int) -> Album:
+    album = Album(**data.model_dump(), created_by_id=user_id)
     session.add(album)
     await session.commit()
     await session.refresh(album, ["artist", "tracks"])
@@ -99,3 +99,4 @@ async def update_track(session: AsyncSession, track: Track, data: TrackUpdate) -
 async def delete_track(session: AsyncSession, track: Track) -> None:
     await session.delete(track)
     await session.commit()
+

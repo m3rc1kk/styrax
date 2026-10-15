@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import String, ForeignKey, DateTime
+from sqlalchemy import String, ForeignKey, DateTime, false
 from sqlalchemy.orm import Mapped, mapped_column
 
 from src.database import Base
@@ -15,6 +15,7 @@ class User(TimestampMixin, Base):
     username: Mapped[str] = mapped_column(String(30), unique=True)
     hashed_password: Mapped[str] = mapped_column(String(250))
     is_active: Mapped[bool] = mapped_column(default=True)
+    is_superuser: Mapped[bool] = mapped_column(default=False, server_default=false())
 
 class RefreshToken(TimestampMixin, Base):
     __tablename__ = "refresh_token"

@@ -21,3 +21,8 @@ class NotAuthenticatedException(DetailedHTTPException):
 
     def __init__(self) -> None:
         super().__init__(headers={"WWW-Authenticate": "Bearer"})
+
+
+class PermissionDeniedException(DetailedHTTPException):
+    STATUS_CODE = status.HTTP_403_FORBIDDEN
+    DETAIL = 'Not enough permissions'
