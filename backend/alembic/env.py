@@ -31,6 +31,7 @@ target_metadata = Base.metadata
 
 from src.music import models  # noqa: F401
 from src.auth import models  # noqa: F401
+from src.ratings import models  # noqa: F401
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

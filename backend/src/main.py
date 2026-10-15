@@ -31,5 +31,8 @@ async def healthcheck():
 
 from src.music.router import router as music_router
 from src.auth.router import router as auth_router
+from src.ratings.router import router as rating_router
 app.include_router(music_router, tags=["Music"])
 app.include_router(auth_router, prefix='/auth' ,tags=["Auth"])
+app.include_router(rating_router, tags=["Rating"])
+
