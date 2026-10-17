@@ -1,0 +1,23 @@
+.page {
+  display: grid;
+  gap: var(--space-6);
+  max-width: var(--form-max);
+}
+
+.form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.submit {
+  justify-self: start;
+}
+
+.switch {
+  color: var(--color-text-muted);
+}
+
+.switch a {
+  color: var(--color-text);
+  text-underline-offset: 0.25em;
+}

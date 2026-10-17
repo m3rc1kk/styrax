@@ -1,0 +1,7 @@
+api.example.com {
+    reverse_proxy backend:8000
+}
+
+example.com {
+    reverse_proxy frontend:80
+}

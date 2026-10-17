@@ -1,0 +1,93 @@
+.scale {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  border: var(--line-thin) solid var(--color-text);
+  border-radius: var(--radius-0);
+}
+
+.cell {
+  position: relative;
+  height: var(--control-lg);
+  padding: 0;
+  border: 0;
+  border-left: var(--line-thin) solid var(--color-line);
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-15);
+  font-variant-numeric: tabular-nums;
+  transition:
+    background-color var(--dur-fast),
+    color var(--dur-base) var(--ease-out);
+}
+
+.cell:first-child {
+  border-left: 0;
+}
+
+.digit {
+  position: relative;
+  z-index: 1;
+}
+
+.cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.cell::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--line-mark);
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+  transition-delay: calc((var(--i) - 1) * var(--stagger) / 2);
+}
+
+.cell[data-filled="true"]::after {
+  transform: scaleX(1);
+}
+
+.cell[data-preview="true"] {
+  background: var(--color-surface);
+}
+
+.cell[aria-pressed="true"] {
+  color: var(--color-on-accent);
+  font-weight: var(--fw-medium);
+}
+
+.cell[aria-pressed="true"]::before {
+  transform: scaleY(1);
+}
+
+.cell:focus-visible {
+  z-index: 2;
+  outline-offset: calc(var(--line-thick) * -2);
+}
+
+.cell[aria-pressed="true"]:focus-visible {
+  outline-color: var(--color-on-accent);
+}
+
+.sm .cell {
+  height: var(--control-sm);
+  font-size: var(--fs-13);
+}
+
+.disabled {
+  border-color: var(--color-line);
+}
+
+.disabled .cell {
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,62 @@
+.skeleton {
+  display: block;
+  background: var(--color-surface);
+  border-radius: var(--radius-1);
+  animation: pulse var(--dur-skeleton) ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.text {
+  height: 1em;
+  width: 70%;
+}
+
+.textShort {
+  height: 1em;
+  width: 2.5em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.lead {
+  height: var(--fs-18);
+  width: 8em;
+}
+
+.title {
+  height: var(--fs-title);
+  width: min(100%, 9em);
+  font-size: var(--fs-title);
+}
+
+.number {
+  height: var(--fs-18);
+  width: 4em;
+}
+
+.score {
+  height: var(--fs-score);
+  width: 2.2em;
+  font-size: var(--fs-score);
+}
+
+.scale {
+  height: var(--control-lg);
+  width: 100%;
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.cell {
+  height: var(--control-sm);
+  width: var(--control-sm);
+  display: inline-block;
+}

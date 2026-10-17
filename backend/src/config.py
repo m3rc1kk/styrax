@@ -16,7 +16,7 @@ class Config(BaseSettings):
     APP_NAME: str = 'Styrax'
     APP_VERSION: str = '1.0.0'
 
-    POSTGRES_NAME: str
+    POSTGRES_DB: str
     POSTGRES_USER: str
     POSTGRES_PASSWORD: SecretStr
     POSTGRES_HOST: str
@@ -35,7 +35,7 @@ class Config(BaseSettings):
             username=self.POSTGRES_USER,
             password=self.POSTGRES_PASSWORD.get_secret_value(),
             host=self.POSTGRES_HOST,
-            database=self.POSTGRES_NAME,
+            database=self.POSTGRES_DB,
             port=self.POSTGRES_PORT,
         )
 

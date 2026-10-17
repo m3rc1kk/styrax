@@ -1,0 +1,30 @@
+.block {
+  display: grid;
+  gap: var(--space-4);
+  padding-block: var(--space-8);
+  border-top: var(--line-thick) solid var(--color-text);
+  max-width: var(--measure);
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-15);
+  color: var(--color-text-muted);
+}
+
+.title {
+  font-size: var(--fs-44);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+.text {
+  color: var(--color-text-muted);
+  font-size: var(--fs-18);
+}
+
+.action {
+  margin-top: var(--space-2);
+}

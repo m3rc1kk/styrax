@@ -1,0 +1,118 @@
+.page {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "cover facts"
+    "cover average"
+    "cover mine";
+  gap: var(--space-6) var(--space-7);
+  align-items: start;
+}
+
+.cover {
+  grid-area: cover;
+}
+
+.facts {
+  grid-area: facts;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.average {
+  grid-area: average;
+}
+
+.mine {
+  grid-area: mine;
+}
+
+.fact {
+  padding-inline: var(--space-3);
+  border-left: var(--line-thin) solid var(--color-line);
+}
+
+.fact:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.fact dt {
+  font-size: var(--fs-13);
+  color: var(--color-text-muted);
+}
+
+.fact dd {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-18);
+  font-variant-numeric: tabular-nums;
+}
+
+.tracks {
+  margin-top: var(--space-6);
+}
+
+.empty {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-6);
+  border-top: var(--line-thick) solid var(--color-text);
+  color: var(--color-text-muted);
+}
+
+.empty a {
+  color: var(--color-text);
+}
+
+.emptyTitle {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.skeletonHead {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-5);
+  border-bottom: var(--line-thick) solid var(--color-line);
+}
+
+.skeletonRow {
+  padding-block: var(--space-4);
+  border-bottom: var(--line-thin) solid var(--color-line);
+}
+
+@media (max-width: 48rem) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "cover facts"
+      "average average"
+      "mine mine";
+    gap: var(--space-6) var(--space-5);
+  }
+
+  .facts {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+
+  .fact,
+  .fact:first-child {
+    padding: var(--space-2) 0;
+    border-left: 0;
+    border-bottom: var(--line-thin) solid var(--color-line);
+  }
+
+  .fact:first-child {
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,17 @@
+.confirm {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: var(--line-thin) solid var(--color-danger);
+  animation: rise-in var(--dur-base) var(--ease-out);
+}
+
+.question {
+  font-weight: var(--fw-medium);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}

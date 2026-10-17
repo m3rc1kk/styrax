@@ -1,0 +1,98 @@
+.page {
+  display: grid;
+  gap: var(--space-9);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+  gap: var(--space-7) var(--space-5);
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6) var(--space-4);
+  }
+}
+
+.cell {
+  animation: rise-in var(--dur-slow) var(--ease-out) both;
+}
+
+.skeletonCard {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.empty {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.empty a {
+  color: var(--color-text);
+}
+
+.emptyTitle {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: var(--line-thick) solid var(--color-text);
+}
+
+.sectionTitle {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+}
+
+.sectionLink {
+  color: var(--color-text-muted);
+  text-underline-offset: 0.25em;
+}
+
+.sectionLink:hover {
+  color: var(--color-text);
+}
+
+.artistList {
+  columns: 4 12rem;
+  column-gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.artistList li {
+  break-inside: avoid;
+  border-bottom: var(--line-thin) solid var(--color-line);
+}
+
+.artistLink {
+  display: block;
+  padding-block: var(--space-3);
+  font-size: var(--fs-18);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color var(--dur-fast);
+}
+
+.artistLink:hover {
+  color: var(--color-accent);
+}
+
+.muted {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+}

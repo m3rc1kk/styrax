@@ -1,0 +1,28 @@
+.page {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.kind {
+  color: var(--color-text-muted);
+}
+
+.albums {
+  display: grid;
+  gap: var(--space-4);
+  max-width: var(--measure);
+}
+
+.sectionTitle {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+}
+
+.note {
+  color: var(--color-text-muted);
+}
+
+.note a {
+  color: var(--color-text);
+}

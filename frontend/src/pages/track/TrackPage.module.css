@@ -1,0 +1,136 @@
+.page {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.sep {
+  color: var(--color-text-muted);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--space-7) var(--space-8);
+  align-items: start;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fact {
+  padding-inline: var(--space-3);
+  border-left: var(--line-thin) solid var(--color-line);
+}
+
+.fact:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.fact dt {
+  font-size: var(--fs-13);
+  color: var(--color-text-muted);
+}
+
+.fact dd {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-18);
+  font-variant-numeric: tabular-nums;
+}
+
+.album {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (max-width: 56rem) {
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.albumHead {
+  display: grid;
+  grid-template-columns: var(--space-9) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: end;
+  padding-bottom: var(--space-3);
+  border-bottom: var(--line-thick) solid var(--color-text);
+}
+
+.albumCover {
+  display: block;
+}
+
+.albumKind {
+  font-size: var(--fs-13);
+  color: var(--color-text-muted);
+}
+
+.albumTitle {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-snug);
+  overflow-wrap: anywhere;
+}
+
+.albumTitle a {
+  text-decoration: none;
+}
+
+.albumTitle a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.list {
+  display: grid;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: var(--space-7) minmax(0, 1fr) auto;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-bottom: var(--line-thin) solid var(--color-line);
+}
+
+.no,
+.dur {
+  font-family: var(--font-mono);
+  font-size: var(--fs-13);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.no {
+  text-align: right;
+}
+
+.itemLink {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--dur-fast);
+}
+
+.itemLink:hover {
+  color: var(--color-text);
+}
+
+.current {
+  font-weight: var(--fw-medium);
+}
+
+.current .no {
+  color: var(--color-accent);
+}
